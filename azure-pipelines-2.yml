@@ -17,15 +17,12 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: KubernetesManifest@1
+- task: Docker@2
   inputs:
-    action: 'createSecret'
-    connectionType: 'kubernetesServiceConnection'
-    kubernetesServiceConnection: 'myAKSCluster-default'
-    namespace: 'default'
-    secretType: 'dockerRegistry'
-    secretName: 'eddxavierpipelinesjavascriptdocker'
-    dockerRegistryEndpoint: 'eduregistry'
+    containerRegistry: 'eduregistry'
+    repository: 'eddxavierpipelinesjavascriptdocker'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 - task: KubernetesManifest@1
   inputs:
     action: 'deploy'
