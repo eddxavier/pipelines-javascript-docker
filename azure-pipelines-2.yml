@@ -24,7 +24,7 @@ steps:
     kubernetesServiceConnection: 'myAKSCluster-default'
     namespace: 'default'
     secretType: 'dockerRegistry'
-    secretName: '$(imagePullSecret)'
+    secretName: 'eddxavierpipelinesjavascriptdocker'
     dockerRegistryEndpoint: 'eduregistry'
 - task: KubernetesManifest@1
   inputs:
